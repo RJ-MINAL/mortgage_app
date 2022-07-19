@@ -67,10 +67,21 @@ class _CustomDashboardRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label1,
-              style: const TextStyle(fontSize: 20, color: AppTheme.fontColor)),
-          Text(label2,
-              style: const TextStyle(fontSize: 20, color: AppTheme.primary)),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.3,
+            child: Text(label1,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style:
+                    const TextStyle(fontSize: 20, color: AppTheme.fontColor)),
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.3,
+            child: Text(label2,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 20, color: AppTheme.primary)),
+          ),
         ],
       ),
     );

@@ -29,7 +29,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               child: Stack(children: [
                 DonutChart(),
                 const Positioned(
-                  bottom: 100,
+                  bottom: 75,
                   right: 75,
                   child: Text('62%', style: accentStyle),
                 )

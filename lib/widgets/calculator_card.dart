@@ -38,7 +38,7 @@ class _CalculatorCardState extends State<CalculatorCard> {
             const SizedBox(height: 10),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               SizedBox(
-                width: 300,
+                width: MediaQuery.of(context).size.width * 0.4,
                 child: TextFormField(
                   initialValue: '500,000',
                   style: const TextStyle(fontSize: 18),
@@ -61,11 +61,16 @@ class _CalculatorCardState extends State<CalculatorCard> {
                   // elevation: 0,
                   color: AppTheme.primary,
                   onPressed: () => {},
-                  child: Container(
-                      padding: const EdgeInsets.all(10),
-                      child: const Text(
-                        '15 years fixed',
-                        style: TextStyle(color: Colors.white, fontSize: 15),
+                  child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      // padding: const EdgeInsets.all(10),
+                      child: const FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(
+                          '15 years fixed',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
                       ))),
             ]),
             const SizedBox(height: 20),
