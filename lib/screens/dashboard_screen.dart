@@ -4,23 +4,29 @@ import 'package:mortgage_app/widgets/widgets.dart';
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
 
-  final _headerTitleStyle = const TextStyle(
-      fontSize: 42, fontWeight: FontWeight.bold, color: Colors.white);
-
   @override
   Widget build(BuildContext context) {
+    const titleStyle = TextStyle(
+        color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const [
               Padding(
-                padding: const EdgeInsets.only(left: 20, top: 20),
-                child: Text('My Dashboard', style: _headerTitleStyle),
-              ),
-              const MortgageCard(),
-              const _LinkedAccountsCard()
+                  padding: EdgeInsets.only(left: 20, top: 20),
+                  child: FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: Text(
+                      'My Dashboard',
+                      style: titleStyle,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  )),
+              MortgageCard(),
+              _LinkedAccountsCard()
             ],
           ),
         ),

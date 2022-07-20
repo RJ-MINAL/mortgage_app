@@ -15,129 +15,132 @@ class _CalculatorCardState extends State<CalculatorCard> {
   @override
   Widget build(BuildContext context) {
     const headerTitleStyle = TextStyle(
-        fontSize: 38, fontWeight: FontWeight.bold, color: AppTheme.fontColor);
+        fontSize: 28, fontWeight: FontWeight.bold, color: AppTheme.fontColor);
 
     const textStyle = TextStyle(
-        fontSize: 18, fontWeight: FontWeight.bold, color: AppTheme.fontColor);
+        fontSize: 15, fontWeight: FontWeight.bold, color: AppTheme.fontColor);
 
     return _CalculatorCardContainer(
         child: SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Mortgage Calculator', style: headerTitleStyle),
-            const SizedBox(height: 30),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text('PROPERTY VALUE', style: textStyle),
-                  Text('TERM', style: textStyle),
-                ]),
-            const SizedBox(height: 10),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.4,
-                child: TextFormField(
-                  initialValue: '500,000',
-                  style: const TextStyle(fontSize: 18),
-                  textAlign: TextAlign.end,
-                  textAlignVertical: TextAlignVertical.center,
-                  decoration: const InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppTheme.fontColor),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppTheme.fontColor),
-                      ),
-                      contentPadding: EdgeInsets.only(right: 20),
-                      prefixIcon: Icon(Icons.attach_money_outlined)),
-                ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Text(
+                'Mortgage Calculator',
+                overflow: TextOverflow.ellipsis,
+                style: headerTitleStyle,
+              )),
+          const SizedBox(height: 30),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text('PROPERTY VALUE', style: textStyle),
+                Text('TERM', style: textStyle),
+              ]),
+          const SizedBox(height: 10),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.4,
+              child: TextFormField(
+                initialValue: '500,000',
+                style: const TextStyle(fontSize: 18),
+                textAlign: TextAlign.end,
+                textAlignVertical: TextAlignVertical.center,
+                decoration: const InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppTheme.fontColor),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppTheme.fontColor),
+                    ),
+                    contentPadding: EdgeInsets.only(right: 20),
+                    prefixIcon: Icon(Icons.attach_money_outlined)),
               ),
-              MaterialButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7)),
-                  // elevation: 0,
-                  color: AppTheme.primary,
-                  onPressed: () => {},
-                  child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.3,
-                      // padding: const EdgeInsets.all(10),
-                      child: const FittedBox(
-                        fit: BoxFit.fitWidth,
-                        child: Text(
-                          '15 years fixed',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 15),
-                        ),
-                      ))),
-            ]),
-            const SizedBox(height: 20),
-            const Text('INTEREST RATE', style: textStyle),
-            Slider(
-              min: 0,
-              max: 9,
-              divisions: 6,
-              label: "${_slider1Value.toString()}%",
-              activeColor: AppTheme.primary,
-              value: _slider1Value,
-              onChanged: (value) {
-                _slider1Value = value;
-                setState(() {});
-              },
             ),
-            Container(
-              alignment: Alignment.center,
-              child: Text("${_slider1Value.toString()}%",
-                  style: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.bold)),
-            ),
-            const SizedBox(height: 20),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text('DOWN PAYMENT', style: textStyle),
-                  Text('\$100,000', style: textStyle),
-                ]),
-            const SizedBox(height: 10),
-            Slider(
-              min: 0,
-              max: 40,
-              activeColor: AppTheme.primary,
-              value: _slider2Value,
-              onChanged: (value) {
-                _slider2Value = value;
-                setState(() {});
-              },
-            ),
-            Container(
-              alignment: Alignment.center,
-              child: Text("${_slider2Value.truncate().toString()}%",
-                  style: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.bold)),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              alignment: Alignment.bottomRight,
-              child: const Text('Advanced',
-                  style: TextStyle(
-                    color: AppTheme.primary,
-                    fontSize: 18,
-                  )),
-            ),
-            Container(
-              alignment: Alignment.bottomCenter,
-              child: const Text(
-                '_______',
+            MaterialButton(
+                padding: const EdgeInsets.all(15),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)),
+                color: AppTheme.primary,
+                onPressed: () => {},
+                child: const FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    '15 year fixed',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
+                )),
+          ]),
+          const SizedBox(height: 20),
+          const Text('INTEREST RATE', style: textStyle),
+          Slider(
+            min: 0,
+            max: 9,
+            divisions: 6,
+            label: "${_slider1Value.toString()}%",
+            activeColor: AppTheme.primary,
+            value: _slider1Value,
+            onChanged: (value) {
+              _slider1Value = value;
+              setState(() {});
+            },
+          ),
+          Container(
+            alignment: Alignment.center,
+            child: Text("${_slider1Value.toString()}%",
+                style:
+                    const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+          ),
+          const SizedBox(height: 20),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text('DOWN PAYMENT', style: textStyle),
+                Text('\$100,000', style: textStyle),
+              ]),
+          const SizedBox(height: 10),
+          Slider(
+            min: 0,
+            max: 40,
+            activeColor: AppTheme.primary,
+            value: _slider2Value,
+            onChanged: (value) {
+              _slider2Value = value;
+              setState(() {});
+            },
+          ),
+          Container(
+            alignment: Alignment.center,
+            child: Text("${_slider2Value.truncate().toString()}%",
+                style:
+                    const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            alignment: Alignment.bottomRight,
+            child: const Text('Advanced',
                 style: TextStyle(
-                    fontWeight: FontWeight.w900, color: AppTheme.fontColor),
-              ),
+                  color: AppTheme.primary,
+                  fontSize: 18,
+                )),
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+            child: const Text(
+              '_______',
+              style: TextStyle(
+                  fontWeight: FontWeight.w900, color: AppTheme.fontColor),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     ));
   }

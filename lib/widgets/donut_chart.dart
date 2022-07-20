@@ -31,7 +31,7 @@ class DonutChart extends StatelessWidget {
               background: Paint()..color = AppTheme.primary,
               color: Colors.white,
               // backgroundColor: AppTheme.primary,
-              fontSize: MediaQuery.of(context).size.width * 0.07,
+              fontSize: MediaQuery.of(context).size.width * 0.065,
               fontWeight: FontWeight.bold),
           chartRadius: MediaQuery.of(context).size.width * 0.5,
           ringStrokeWidth: 45,

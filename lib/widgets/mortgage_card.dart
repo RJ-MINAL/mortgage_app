@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mortgage_app/themes/app_theme.dart';
-import 'package:mortgage_app/widgets/labeled_card_container.dart';
+import 'package:mortgage_app/widgets/widgets.dart';
 
 class MortgageCard extends StatelessWidget {
   const MortgageCard({
@@ -17,7 +17,6 @@ class MortgageCard extends StatelessWidget {
         children: [
           const Image(
             image: AssetImage('assets/img/house.png'),
-            width: 300,
             fit: BoxFit.cover,
           ),
           const SizedBox(height: 10),
@@ -29,9 +28,7 @@ class MortgageCard extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           ),
           const Text('Principal Outstanding', style: TextStyle(fontSize: 20)),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           const _CustomDashboardRow(label1: 'Next Payment', label2: '\$4,372'),
           const _CustomDashboardRow(
               label1: 'Due Date', label2: 'March 1, 2020'),
@@ -67,21 +64,8 @@ class _CustomDashboardRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.3,
-            child: Text(label1,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style:
-                    const TextStyle(fontSize: 20, color: AppTheme.fontColor)),
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.3,
-            child: Text(label2,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 20, color: AppTheme.primary)),
-          ),
+          FlexibleText(label: label1, bold: true),
+          FlexibleText(label: label2, color: AppTheme.primary, bold: true),
         ],
       ),
     );

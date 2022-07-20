@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mortgage_app/widgets/widgets.dart';
 
 class LabeledCardContainer extends StatelessWidget {
   final Widget child;
@@ -14,37 +15,44 @@ class LabeledCardContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const titleStyle = TextStyle(
+        color: Colors.white70, fontSize: 18, fontWeight: FontWeight.bold);
+
     return Padding(
-      padding: const EdgeInsets.all(30),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title.toUpperCase(),
-            style: Theme.of(context)
-                .textTheme
-                .headline6
-                ?.copyWith(color: Colors.white),
+          FittedBox(
+            fit: BoxFit.fitWidth,
+            child: Text(
+              title.toUpperCase(),
+              style: titleStyle,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
           const SizedBox(height: 10),
           Container(
             width: double.infinity,
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             decoration: _cardShapeDecoration(),
             // child: child,
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      const SizedBox(width: 10),
-                      Text(subtitle, style: const TextStyle(fontSize: 20))
-                    ],
-                  ),
-                  SizedBox(
-                    child: child,
+                  const SizedBox(width: 10),
+                  FlexibleText(
+                    label: subtitle,
+                    size: 20,
+                    color: Colors.black87,
                   )
-                ]),
+                ],
+              ),
+              SizedBox(
+                child: child,
+              )
+            ]),
           ),
         ],
       ),
